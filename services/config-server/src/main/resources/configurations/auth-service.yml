@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://${RDS_HOST:localhost}:${RDS_PORT:3306}/${RDS_DB_AUTH:auth}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://${RDS_HOST:localhost}:${RDS_PORT:3306}/${RDS_DB_AUTH:auth}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
     username: ${RDS_USER:mysql}
     password: ${RDS_PASSWORD:mysql}
     driver-class-name: com.mysql.cj.jdbc.Driver
