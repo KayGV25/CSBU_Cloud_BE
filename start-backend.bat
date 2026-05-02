@@ -3,8 +3,8 @@ echo ===========================================
 echo Starting CSBU Microservices Backend
 echo ===========================================
 
-set RDS_HOST=localhost
-set RDS_PORT=5435
+set RDS_HOST=group3-rds.cubvcxxxfvcp.us-east-1.rds.amazonaws.com
+set RDS_PORT=3306
 set RDS_USER=group3admin
 set RDS_PASSWORD=Group3123456789!
 set APP_TIMEZONE=UTC

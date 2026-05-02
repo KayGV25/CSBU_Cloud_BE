@@ -4,8 +4,8 @@ echo "==========================================="
 echo "Starting CSBU Microservices Backend"
 echo "==========================================="
 
-export RDS_HOST=localhost
-export RDS_PORT=5435
+export RDS_HOST=group3-rds.cubvcxxxfvcp.us-east-1.rds.amazonaws.com
+export RDS_PORT=3306
 export RDS_USER=group3admin
 export RDS_PASSWORD='Group3123456789!'
 export APP_TIMEZONE=UTC

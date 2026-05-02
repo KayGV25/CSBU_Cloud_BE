@@ -1,14 +1,14 @@
 spring:
   datasource:
-    url: jdbc:postgresql://${RDS_HOST:localhost}:${RDS_PORT:5432}/${RDS_DB_PROJECTS:projects}
+    url: jdbc:mysql://${RDS_HOST:localhost}:${RDS_PORT:3306}/${RDS_DB_PROJECTS:projects}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: ${RDS_USER:postgres}
     password: ${RDS_PASSWORD:postgres}
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
 
 server:
   port: 8070
