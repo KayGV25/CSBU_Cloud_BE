@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @Service
 public class S3Service {
-    @Value("${aws.s3.bucket.name:csbu-finance-storage}")
+    @Value("${aws.s3.bucket.name:group-3-buckett}")
     private String bucketName;
 
     private final S3Client s3Client;
@@ -21,7 +21,7 @@ public class S3Service {
     }
 
     public String upload(MultipartFile imgFile, String fileName) throws IOException {
-        String fullPath = "software_design_storage/transactions/" + fileName;
+        String fullPath = "storage/transactions/" + fileName;
 
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(bucketName)
