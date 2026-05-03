@@ -54,8 +54,8 @@ run_service() {
     LOG_FILE="${SERVICE_NAME}.log"
 
     nohup ./mvnw spring-boot:run \
-        -Dspring-boot.run.jvmArguments="-Duser.timezone=$APP_TIMEZONE" \
-        > "$LOG_FILE" 2>&1 &
+        -Dspring-boot.run.jvmArguments="-Xms128m -Xmx256m -Duser.timezone=$APP_TIMEZONE" \
+        > "${SERVICE_NAME}.log" 2>&1 &
 
     PID=$!
     echo "$SERVICE_NAME started with PID $PID"
