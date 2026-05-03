@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/department")
-@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class DepartmentController {
     private final DepartmentService services;
