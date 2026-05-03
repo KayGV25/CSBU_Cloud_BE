@@ -78,3 +78,5 @@ run_service "services/users-auth" "users-auth"
 echo "==========================================="
 echo "✅ All services are UP and running!"
 echo "==========================================="
+
+wait
