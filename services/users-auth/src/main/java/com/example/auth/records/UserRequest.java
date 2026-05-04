@@ -13,6 +13,8 @@ public record UserRequest(
         @NotNull(message = "You must mention how long have you been working")
         Integer yoe,
         Boolean approved,
-        String role
+        String role,
+        @NotNull(message = "Password is required")
+        String password
 ) {
 }

@@ -21,6 +21,7 @@ public class UserMapper {
                 .dob(request.dob())
                 .department_id(request.department_id())
                 .yoe(request.yoe())
+                .password(request.password())
                 .build();
     }
 

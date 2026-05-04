@@ -69,6 +69,9 @@ public class UserService {
         if (updatedUser.role() != null) {
             user.setRole(updatedUser.role());
         }
+        if (updatedUser.password() != null) {
+            user.setPassword(updatedUser.password());
+        }
         repository.save(user);
         // Lưu User đã cập nhật vào MongoDB
         return "Updated Successfully"; // Phương thức save sẽ cập nhật nếu đã tồn tại

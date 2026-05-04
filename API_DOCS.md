@@ -205,9 +205,36 @@ This document outlines the available REST API endpoints exposed by the various m
 
 ### Authentication
 
-* **`GET /api/v1/auth/login`**
-  * **Description:** Endpoint to authenticate/login a user.
-  * **Returns:** 200 OK (String)
+* **`POST /api/v1/auth/login`**
+  * **Description:** Authenticate a user with user ID and password.
+  * **Request Body (JSON):**
+    ```json
+    {
+      "user_id": "USR-001",
+      "password": "demo-password"
+    }
+    ```
+  * **Returns:** 200 OK
+    ```json
+    {
+      "authenticated": true,
+      "message": "Login successful",
+      "accessToken": "eyJhbGciOiJIUzI1NiJ9..."
+    }
+    ```
+
+* **`POST /api/v1/auth/profile`**
+  * **Description:** Resolve a user ID from an access token.
+  * **Request Body (JSON):**
+    ```json
+    {
+      "token": "eyJhbGciOiJIUzI1NiJ9..."
+    }
+    ```
+  * **Returns:** 200 OK (String user ID)
+    ```json
+    "USR-001"
+    ```
 
 ---
 
@@ -268,7 +295,8 @@ This document outlines the available REST API endpoints exposed by the various m
       "department_id": "DEPT-001",
       "yoe": 5,
       "approved": false,
-      "role": "EMPLOYEE"
+      "role": "EMPLOYEE",
+      "password": "demo-password"
     }
     ```
     > `id` is optional — if omitted, the server will generate one.  
@@ -277,6 +305,7 @@ This document outlines the available REST API endpoints exposed by the various m
 
 * **`GET /api/v1/users`**
   * **Description:** Retrieve a list of all users.
+  * **Headers:** `Authorization: Bearer <accessToken>`
   * **Returns:** 200 OK
     ```json
     [
@@ -294,6 +323,7 @@ This document outlines the available REST API endpoints exposed by the various m
 * **`GET /api/v1/users/{user_id}`**
   * **Description:** Get a specific user by their ID.
   * **Path Variable:** `user_id`
+  * **Headers:** `Authorization: Bearer <accessToken>`
   * **Returns:** 200 OK
     ```json
     {
@@ -309,6 +339,7 @@ This document outlines the available REST API endpoints exposed by the various m
 * **`PUT /api/v1/users/{user_id}`**
   * **Description:** Update an existing user's details.
   * **Path Variable:** `user_id`
+  * **Headers:** `Authorization: Bearer <accessToken>`
   * **Request Body (JSON):**
     ```json
     {
@@ -318,7 +349,8 @@ This document outlines the available REST API endpoints exposed by the various m
       "department_id": "DEPT-002",
       "yoe": 6,
       "approved": true,
-      "role": "MANAGER"
+      "role": "MANAGER",
+      "password": "new-demo-password"
     }
     ```
   * **Returns:** 200 OK

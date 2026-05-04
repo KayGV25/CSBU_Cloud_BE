@@ -24,4 +24,5 @@ public class User {
     private Integer yoe;
     private Boolean approved;
     private String role;
+    private String password;
 }
