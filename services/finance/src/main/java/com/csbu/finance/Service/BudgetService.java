@@ -139,5 +139,9 @@ public class BudgetService {
         }
     }
 
+    public boolean existsById(String id) {
+        return budgetRepository.existsById(id);
+    }
+
 }
 

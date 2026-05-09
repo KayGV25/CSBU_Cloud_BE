@@ -125,23 +125,26 @@ public class FinanceController {
     @PostMapping("/budgets")
     public ResponseEntity<String> createBudget(@RequestBody @Valid AddBudgetRequest request)
     {
-        Budget existingBudget = budgetService.getBudgetById(request.getId());
-        if (existingBudget != null) {
+        if (budgetService.existsById(request.getId())) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("Budget already exists with id: " + request.getId());
         }
-        
+
         Budget budget = new Budget();
+
         budget.setId(request.getId());
         budget.setPeriodStart(request.getPeriodStart());
         budget.setDescription(request.getDescription());
         budget.setPeriodEnd(request.getPeriodEnd());
         budget.setCurrency(request.getCurrency());
+
         budget.setApprovedAmount(request.getBudgetAmount());
         budget.setRemainingAmount(request.getBudgetAmount());
 
         budgetService.createBudget(budget);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Budget added successfully");
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Budget added successfully");
     }
 
     @GetMapping("/budgets")
